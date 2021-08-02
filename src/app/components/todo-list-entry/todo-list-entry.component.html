@@ -1,1 +1,20 @@
-<p>todo-list-entry works!</p>
+<form [formGroup]="form"
+      (ngSubmit)="addItem(itemEntry)">
+  <div class="form-group">
+    <label for="item">Item</label>
+    <input type="text"
+           #itemEntry
+           autofocus
+           id="item"
+           formControlName="item"
+           class="form-control">
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="item?.errors && (item?.touched || item?.dirty)">
+    <p *ngIf="item?.errors?.required">This is required</p>
+    <p *ngIf="item?.errors?.minlength">This has to be at least {{ item?.errors?.minlength?.requiredLength }}
+      characters long</p>
+  </div>
+  <button type="submit"
+          class="btn btn-primary">Add Item</button>
+</form>
