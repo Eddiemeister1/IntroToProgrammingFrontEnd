@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "angular.ng-template",
+        "editorconfig.editorconfig",
+        "humao.rest-client",
+        "ecmel.vscode-html-css",
+        "dbaeumer.vscode-eslint"
+    ]
+}
