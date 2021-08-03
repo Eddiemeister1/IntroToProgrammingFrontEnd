@@ -5,5 +5,5 @@
   <app-todo-list-entry (itemAdded)="addToList($event)"></app-todo-list-entry>
 </section>
 <section>
-  <app-todo-list-items [todoList]="items"></app-todo-list-items>
+  <app-todo-list-items [todoList]="(items$ | async) || []"></app-todo-list-items>
 </section>
