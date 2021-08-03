@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<div class="alert alert-info">
+  <h3>Todo Lists</h3>
+  <p>You have {{ (numberOfTodos$ | async) || 0 }} todos on your list</p>
+</div>
