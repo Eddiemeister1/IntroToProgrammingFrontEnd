@@ -10,6 +10,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { TodosDataService } from './services/todos.data-service';
+import { HttpClientModule } from '@angular/common/http';
+import { CounterComponent } from './components/counter/counter.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './reducers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,12 +22,16 @@ import { TodosDataService } from './services/todos.data-service';
     TodoListEntryComponent,
     TodoListItemsComponent,
     DashboardComponent,
-    NavigationComponent
+    NavigationComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [TodosDataService],
   bootstrap: [AppComponent]
