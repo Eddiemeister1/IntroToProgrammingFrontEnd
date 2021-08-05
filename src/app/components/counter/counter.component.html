@@ -5,3 +5,8 @@
   <button class="btn btn-primary"
           (click)="increment()">+</button>
 </div>
+<div>
+  <button class="btn btn-danger"
+          [disabled]="(current$ | async) === 0"
+          (click)="reset()">RESET</button>
+</div>

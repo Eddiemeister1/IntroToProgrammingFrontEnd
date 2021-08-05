@@ -15,6 +15,12 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
+import { LearningPathComponent } from './components/learning-path/learning-path.component';
+import { LearningPathEntryComponent } from './components/learning-path-entry/learning-path-entry.component';
+import { LearningPathListComponent } from './components/learning-path-list/learning-path-list.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './effects/app.effects';
+import { LearningEffects } from './effects/learning.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +29,10 @@ import { reducers } from './reducers';
     TodoListItemsComponent,
     DashboardComponent,
     NavigationComponent,
-    CounterComponent
+    CounterComponent,
+    LearningPathComponent,
+    LearningPathEntryComponent,
+    LearningPathListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,8 @@ import { reducers } from './reducers';
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([AppEffects, LearningEffects])
   ],
   providers: [TodosDataService],
   bootstrap: [AppComponent]

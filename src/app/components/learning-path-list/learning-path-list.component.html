@@ -1,0 +1,14 @@
+<ul class="list-unstyled">
+  <li class="card"
+      *ngFor="let item of items">
+    <div class="card-header">
+      <span> {{item.topic}}</span>
+    </div>
+    <div class="card-body">
+      <p> This is an <b> {{item.competency}}</b></p>
+      <pre *ngIf="item.notes">
+          {{ item.notes }}
+        </pre>
+    </div>
+  </li>
+</ul>
