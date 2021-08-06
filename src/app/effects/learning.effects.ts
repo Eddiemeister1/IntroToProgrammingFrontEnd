@@ -19,6 +19,20 @@ export class LearningEffects {
     )
   );
 
+  fakeId = 1;
+  //give a fake id to the learning item
+  learningItemCreated = createEffect(() =>
+    this.actions$.pipe(
+      ofType(actions.learningItemCreated),
+      map(fakeItem => {
+        const tempItem: LearningEntity = {
+          id: 'TEMPID' + this.fakeId++,
+          ...fakeItem.payload
+        };
+        return actions.temporaryLearningItemCreated({ payload: tempItem })
+      })
+    ))
+
   constructor(private actions$: Actions) {
   }
 }

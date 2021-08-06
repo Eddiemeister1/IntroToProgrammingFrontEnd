@@ -4,3 +4,9 @@ export interface LearningListItem {
   competency: string;
   notes?: string;
 }
+
+export interface LearningItemCreate {
+  topic: string;
+  competency: string;
+  notes?: string;
+}
