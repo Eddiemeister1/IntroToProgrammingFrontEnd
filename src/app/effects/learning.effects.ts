@@ -17,7 +17,8 @@ export class LearningEffects {
       ofType(actions.loadLearningData),
       map(() => actions.loadLearningDataSucceeded({ payload: this.fakeDataForNow }))
     )
-  )
+  );
+
   constructor(private actions$: Actions) {
   }
 }

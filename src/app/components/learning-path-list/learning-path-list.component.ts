@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState, selectLearningListItems } from 'src/app/reducers';
 import { LearningListItem } from '../models/learning.models';
 
 @Component({
@@ -8,13 +11,13 @@ import { LearningListItem } from '../models/learning.models';
 })
 export class LearningPathListComponent implements OnInit {
 
-  items: LearningListItem[] = [
-    { id: '1', topic: 'Docker', competency: 'Competency' },
-    { id: '2', topic: 'Jazz Piano', competency: 'None', notes: 'Give up' }
-  ]
-  constructor() { }
+  items$!: Observable<LearningListItem[]>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    // TODO - select same data that returns as a LearningListItem[]
+    this.items$ = this.store.select(selectLearningListItems);
   }
 
 }
