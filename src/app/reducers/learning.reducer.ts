@@ -20,7 +20,13 @@ const initialState = adapter.getInitialState();
 const reducerFunction = createReducer(
   initialState,
   on(actions.loadLearningDataSucceeded, (state, action) => adapter.setMany(action.payload, state)),
-  on(actions.temporaryLearningItemCreated, (state, action) => adapter.addOne(action.payload, state))
+  on(actions.temporaryLearningItemCreated, (state, action) => adapter.addOne(action.payload, state)),
+  on(actions.learningItemSaved, (state, action) => adapter.updateOne({
+    id: action.oldId,
+    changes: {
+      id: action.payload.id
+    }
+  }, state))
 );
 
 export function reducer(state: LearningState = initialState, action: Action): LearningState {

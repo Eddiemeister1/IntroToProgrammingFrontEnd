@@ -9,6 +9,12 @@ services:
       - 1433:1433
     volumes:
       - sql_data:/var/opt/mssql/data
+  api:
+    image: jeffrygonzalez/learningapi:latest
+    ports:
+      - 1337:80
+    environment:
+      - ConnectionStrings__learning=server=sql;database=learning_dev;user=sa;password=TokyoJoe138!
 
 volumes:
   sql_data:
